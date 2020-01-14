@@ -96,6 +96,12 @@ elif grep ID /etc/os-release | grep -q 'arch\|manjaro'; then
 		unzip \
 		wget \
 		zip
+    type yay >/dev/null 2>&1
+    if [[ $? == 0 ]]; then
+        yay -S bootloadhid
+    else
+        echo "!!!Prease manually install bootloadhid package from AUR!!!"
+    fi
 
 elif grep ID /etc/os-release | grep -q gentoo; then
 	echo "$GENTOO_WARNING" | fmt
